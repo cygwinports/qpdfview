@@ -1,0 +1,9 @@
+inherit qt4-qmake
+
+CATEGORY="Graphics"
+SUMMARY="Qt PDF viewer"
+DESCRIPTION="qpdfview is a tabbed PDF viewer using the poppler library."
+HOMEPAGE="https://launchpad.net/qpdfview/"
+SRC_URI="https://launchpad.net/qpdfview/trunk/${PV}/+download/${P}.tar.gz"
+
+CYGQMAKE4_ARGS=" CONFIG+=without_cups"
