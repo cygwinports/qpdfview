@@ -1,5 +1,8 @@
 inherit qt4-qmake
 
+NAME=qpdfview
+VERSION=0.3.3
+RELEASE=1
 CATEGORY="Graphics"
 SUMMARY="Qt PDF viewer"
 DESCRIPTION="qpdfview is a tabbed PDF viewer using the poppler library."
