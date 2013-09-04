@@ -1,12 +1,21 @@
 inherit qt4-qmake
 
 NAME=qpdfview
-VERSION=0.3.5
+VERSION=0.4.4
 RELEASE=1
 CATEGORY="Graphics"
-SUMMARY="Qt PDF viewer"
-DESCRIPTION="qpdfview is a tabbed PDF viewer using the poppler library."
+SUMMARY="Qt document viewer"
+DESCRIPTION="qpdfview is a tabbed document viewer. It uses Poppler for PDF
+support, libspectre for PS support, DjVuLibre for DjVu support, and the Qt
+toolkit for its interface."
 HOMEPAGE="https://launchpad.net/qpdfview/"
-SRC_URI="https://launchpad.net/qpdfview/trunk/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/qpdfview/trunk/${VERSION}/+download/qpdfview-${VERSION}.tar.gz"
+PATCH_URI="0.4.4-noinst-static-plugins.patch"
 
-CYGQMAKE4_ARGS=" CONFIG+=without_cups"
+src_compile() {
+	lndirs
+	cd ${B}
+	cygqmake4 qpdfview.pro \
+		CONFIG+="static_pdf_plugin static_ps_plugin static_djvu_plugin without_cups"
+	cygmake
+}

@@ -1,0 +1,14 @@
+We choose static plugins so as to not have to patch the plugin sonames
+in qdpdfview-application.pro.
+
+--- origsrc/qpdfview-0.4.4/qpdfview-djvu-plugin.pro	2013-07-29 12:46:21.011332000 -0500
++++ src/qpdfview-0.4.4/qpdfview-djvu-plugin.pro	2013-09-04 11:24:51.301157000 -0500
+@@ -27,7 +27,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT +=
+     LIBS += $$DJVU_PLUGIN_LIBS
+ }
+ 
+-!static_dvju_plugin {
++!static_djvu_plugin {
+     target.path = $${PLUGIN_INSTALL_PATH}
+     INSTALLS += target
+ }
