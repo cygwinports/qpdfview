@@ -1,7 +1,7 @@
-inherit qt4-qmake
+inherit qt5-qmake
 
 NAME="qpdfview"
-VERSION=0.4.10
+VERSION=0.4.13
 RELEASE=1
 CATEGORY="Graphics"
 SUMMARY="Qt document viewer"
@@ -10,12 +10,14 @@ support, libspectre for PS support, DjVuLibre for DjVu support, and the Qt
 toolkit for its interface."
 HOMEPAGE="https://launchpad.net/qpdfview/"
 SRC_URI="https://launchpad.net/qpdfview/trunk/${VERSION}/+download/qpdfview-${VERSION}.tar.gz"
-PATCH_URI="0.4.4-noinst-static-plugins.patch"
 
 src_compile() {
 	lndirs
 	cd ${B}
-	cygqmake4 qpdfview.pro \
-		CONFIG+="static_pdf_plugin static_ps_plugin static_djvu_plugin without_cups"
+	cygqmake5 qpdfview.pro \
+		PDF_PLUGIN_NAME=cygqpdfview_pdf.dll \
+		PS_PLUGIN_NAME=cygqpdfview_ps.dll \
+		DJVU_PLUGIN_NAME=cygqpdfview_djvu.dll \
+		CONFIG+="without_cups"
 	cygmake
 }
