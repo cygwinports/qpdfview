@@ -1,7 +1,7 @@
 inherit qt5-qmake
 
 NAME="qpdfview"
-VERSION=0.4.13
+VERSION=0.4.14
 RELEASE=1
 CATEGORY="Graphics"
 SUMMARY="Qt document viewer"
@@ -14,6 +14,7 @@ SRC_URI="https://launchpad.net/qpdfview/trunk/${VERSION}/+download/qpdfview-${VE
 src_compile() {
 	lndirs
 	cd ${B}
+	# static plugins do not build with qt5
 	cygqmake5 qpdfview.pro \
 		PDF_PLUGIN_NAME=cygqpdfview_pdf.dll \
 		PS_PLUGIN_NAME=cygqpdfview_ps.dll \
