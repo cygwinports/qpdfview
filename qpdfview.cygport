@@ -1,8 +1,8 @@
 inherit qt5-qmake
 
 NAME="qpdfview"
-VERSION=0.4.14
-RELEASE=2
+VERSION=0.4.16
+RELEASE=1
 CATEGORY="Graphics"
 SUMMARY="Qt document viewer"
 DESCRIPTION="qpdfview is a tabbed document viewer. It uses Poppler for PDF
@@ -20,6 +20,7 @@ src_compile() {
 		PDF_PLUGIN_NAME=cygqpdfview_pdf.dll \
 		PS_PLUGIN_NAME=cygqpdfview_ps.dll \
 		DJVU_PLUGIN_NAME=cygqpdfview_djvu.dll \
+		IMAGE_PLUGIN_NAME=cygqpdfview_image.dll \
 		CONFIG+="without_cups"
 	cygmake
 }
